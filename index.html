@@ -17,18 +17,30 @@
         }
 
         /* En-tête avec logo centré */
-        header {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 70px; /* Set a fixed height for the header */
+}
 
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.logo img {
+    height: 100%; /* Make the logo fill the height of the header */
+    width: auto; /* Maintain aspect ratio */
+}
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -56,17 +68,7 @@
     overflow-x: hidden;
 }
 
-        .logo {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
 
-        .logo img {
-            height: 50px; /* Ajustez la taille du logo */
-            width: auto;
-        }
 
         /* Bannière */
         .banner {
