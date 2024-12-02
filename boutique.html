@@ -130,6 +130,9 @@
     </div>
 
     <script>
+        // Reference to the cart window
+        let cartWindow = null;
+
         function addToCart(productName, productPrice) {
             // Retrieve cart from localStorage or initialize it if it doesn't exist
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -149,6 +152,14 @@
 
             // Notify user the item was added
             alert(`${productName} a été ajouté au panier.`);
+
+            // Open the cart window if it's not already open, or if it has been closed
+            if (!cartWindow || cartWindow.closed) {
+                cartWindow = window.open('panier.html', 'Panier', 'width=800,height=600');
+            } else {
+                // If the cart window is already open, bring it to focus
+                cartWindow.focus();
+            }
         }
     </script>
 </body>
