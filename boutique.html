@@ -106,7 +106,7 @@
                 <h3>Lampe avant pour vélo</h3>
                 <p>Puissante lampe LED pour une visibilité optimale lors de vos trajets nocturnes.</p>
                 <p><strong>Prix :</strong> 25,00 €</p>
-                <a href="javascript:addToCart('Lampe avant pour vélo')" aria-label="Ajouter la lampe avant pour vélo au panier">Ajouter au panier</a>
+                <a href="javascript:addToCart('Lampe avant pour vélo', 25)" aria-label="Ajouter la lampe avant pour vélo au panier">Ajouter au panier</a>
             </div>
         </div>
         <div class="product">
@@ -115,7 +115,7 @@
                 <h3>Lampe arrière pour vélo</h3>
                 <p>Lampe arrière rouge avec plusieurs modes d'éclairage pour votre sécurité.</p>
                 <p><strong>Prix :</strong> 15,00 €</p>
-                <a href="javascript:addToCart('Lampe arrière pour vélo')" aria-label="Ajouter la lampe arrière pour vélo au panier">Ajouter au panier</a>
+                <a href="javascript:addToCart('Lampe arrière pour vélo', 15)" aria-label="Ajouter la lampe arrière pour vélo au panier">Ajouter au panier</a>
             </div>
         </div>
         <div class="product">
@@ -124,9 +124,32 @@
                 <h3>Lampe rechargeable pour vélo</h3>
                 <p>Lampe avant et arrière rechargeable par USB, durable et écologique.</p>
                 <p><strong>Prix :</strong> 35,00 €</p>
-                <a href="javascript:addToCart('Lampe rechargeable pour vélo')" aria-label="Ajouter la lampe rechargeable pour vélo au panier">Ajouter au panier</a>
+                <a href="javascript:addToCart('Lampe rechargeable pour vélo', 35)" aria-label="Ajouter la lampe rechargeable pour vélo au panier">Ajouter au panier</a>
             </div>
         </div>
     </div>
+
+    <script>
+        function addToCart(productName, productPrice) {
+            // Retrieve cart from localStorage or initialize it if it doesn't exist
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Find if the product already exists in the cart
+            const existingProduct = cart.find(item => item.name === productName);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1; // Increment quantity if it exists
+            } else {
+                // Add new product to cart
+                cart.push({ name: productName, price: productPrice, quantity: 1 });
+            }
+
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Notify user the item was added
+            alert(`${productName} a été ajouté au panier.`);
+        }
+    </script>
 </body>
 </html>
